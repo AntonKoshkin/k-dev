@@ -1,0 +1,18 @@
+form.ui.large.form.segment
+	h3.ui.header add one more link
+
+	.field
+		label(for='title') title:
+		input(
+			type='text'
+			name='title'
+			#newtitle)
+
+	.field
+		label(for='link') link:
+		input(
+			type='text'
+			name='link'
+			#newlink)
+
+	button.ui.positive.right.floated.button((click)='addArticle(newtitle, newlink)') send
