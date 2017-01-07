@@ -9,9 +9,12 @@ const ProgressBarPlugin		= require('progress-bar-webpack-plugin');
 const CopyWebpackPlugin		= require('copy-webpack-plugin');
 
 module.exports = {
-	entry : './src/app.ts',
+	entry : {
+		app: './src/app.ts',
+		vendor: './src/vendor.ts',
+	},
 	output: {
-		filename  : './js/app.js',
+		filename  : './js/[name].js',
 		path      : path.join(__dirname, '/dist'),
 	},
 
@@ -65,18 +68,6 @@ module.exports = {
 				{
 					from: 'src/index.html',
 					to  : 'index.html',
-				},
-				{
-					from: 'node_modules/reflect-metadata/Reflect.js',
-					to  : 'js/Reflect.js',
-				},
-				{
-					from: 'node_modules/zone.js/dist/zone.js',
-					to  : 'js/zone.js',
-				},
-				{
-					from: 'node_modules/core-js/client/shim.min.js',
-					to  : 'js/shim.min.js',
 				},
 				{
 					from: 'node_modules/semantic-ui/dist/semantic.min.css',

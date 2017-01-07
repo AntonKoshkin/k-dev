@@ -1,7 +1,6 @@
 import {platformBrowserDynamic}	from '@angular/platform-browser-dynamic';
 
-// import {HelloAngularAppModule} from './modules/HelloAngularAppModule';
-import {RedditAppModule} from './modules/RedditAppModule';
+import {ToDoModule} from './modules/toDo';
 
-// platformBrowserDynamic().bootstrapModule(HelloAngularAppModule);
-platformBrowserDynamic().bootstrapModule(RedditAppModule);
+
+platformBrowserDynamic().bootstrapModule(ToDoModule);
