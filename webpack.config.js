@@ -7,11 +7,13 @@ const CleanWebpackPlugin	= require('clean-webpack-plugin');
 const path						= require('path');
 const ProgressBarPlugin		= require('progress-bar-webpack-plugin');
 const CopyWebpackPlugin		= require('copy-webpack-plugin');
+const HtmlWebpackPlugin		= require('html-webpack-plugin');
+const FaviconWebpackPlugin	= require('favicons-webpack-plugin');
 
 module.exports = {
 	entry : {
-		app: './src/app.ts',
-		vendor: './src/vendor.ts',
+		app: './src/app/app.ts',
+		vendor: './src/app/vendor.ts',
 	},
 	output: {
 		filename  : './js/[name].js',
@@ -66,23 +68,31 @@ module.exports = {
 		new CopyWebpackPlugin(
 			[
 				{
-					from: 'src/index.html',
-					to  : 'index.html',
-				},
-				{
-					from: 'node_modules/semantic-ui/dist/semantic.min.css',
-					to  : 'css/semantic.min.css',
-				},
-				{
 					from: 'src/styles.css',
 					to  : 'css/styles.css',
-				},
-				{
-					from: 'src/img/**/*.*',
-					to  : 'img/[name].[ext]',
 				}
 			]
 		),
+		new HtmlWebpackPlugin({
+			template: './src/index.jade',
+		}),
+		new FaviconWebpackPlugin({
+			logo  : './src/img/header-logo.png',
+			prefix: 'icons-[hash]/',
+			title : 'K-DEV',
+			icons: {
+				android     : true,
+				appleIcon   : true,
+				appleStartup: true,
+				coast       : true,
+				favicons    : true,
+				firefox     : true,
+				opengraph   : true,
+				twitter     : true,
+				yandex      : true,
+				windows     : true,
+			},
+		}),
 		new webpack.NoErrorsPlugin(),
 	],
 
@@ -96,5 +106,7 @@ module.exports = {
 	// 	debug      : true,
 		colors     : true,
 		noInfo     : true,
+
+		historyApiFallback: true,
 	},
 };

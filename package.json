@@ -8,7 +8,8 @@
     "lite": "lite-server",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "go": "concurrently \"npm run tsc:w\" \"npm run lite\""
+    "go": "concurrently \"npm run tsc:w\" \"npm run lite\"",
+    "postinstall": "npm install -g typescript"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
   "devDependencies": {
     "@types/core-js": "^0.9.35",
     "@types/node": "^6.0.57",
+    "angular-in-memory-web-api": "^0.2.4",
     "babel": "^5.8.29",
     "babel-core": "^6.4.0",
     "babel-loader": "^6.2.1",
@@ -50,6 +52,8 @@
     "concurrently": "^3.1.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.26.1",
+    "favicons-webpack-plugin": "0.0.7",
+    "html-webpack-plugin": "^2.26.0",
     "jade": "^1.11.0",
     "jade-loader": "^0.8.0",
     "progress-bar-webpack-plugin": "^1.9.2",
