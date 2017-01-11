@@ -18,4 +18,4 @@ export class DataService implements InMemoryDbService {
 		];
 		return {heroes};
 	}
-}
+};

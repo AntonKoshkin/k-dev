@@ -6,10 +6,10 @@ import {Headers, Http}	from '@angular/http';
 import {Hero} from '../classes/hero.class';
 
 @Injectable()
-export class HeroService{
+export class HeroService {
 	constructor (private http: Http) {}
 
-	private heroesUrl: string = 'api/heroes';
+	private heroesUrl: string = 'localhost:1337/api/heroes';
 	private headers = new Headers({'Content-Type': 'application/json'});
 
 	getHeroes(): Promise<Hero[]> {
