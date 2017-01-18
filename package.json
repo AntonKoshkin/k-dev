@@ -6,8 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "NODE_ENV=production webpack -p",
-    "server": "NODE_ENV=production webpack -p && node server/app.js",
-    "postinstall": "npm install -g typescript tslint"
+    "server": "NODE_ENV=production webpack -p && supervisor server/app.js",
+    "postinstall": "npm install -g typescript tslint supervisor node-inspector"
   },
   "repository": {
     "type": "git",
@@ -32,18 +32,14 @@
     "@angular/router": "^3.4.1",
     "@angular/upgrade": "^2.4.1",
     "angular-in-memory-web-api": "^0.2.4",
-    "body-parser": "^1.15.2",
-    "cookie-parser": "^1.4.3",
     "core-js": "^2.4.1",
-    "express": "^4.14.0",
-    "express-session": "^1.14.2",
+    "i": "^0.3.5",
     "method-override": "^2.3.7",
-    "morgan": "^1.7.0",
+    "normalize-styl": "^4.1.1",
+    "npm": "^4.1.1",
     "reflect-metadata": "^0.1.9",
     "rxjs": "^5.0.3",
     "semantic-ui": "^2.2.7",
-    "serve-static": "^1.11.1",
-    "winston": "^2.3.0",
     "zone.js": "^0.7.4"
   },
   "devDependencies": {

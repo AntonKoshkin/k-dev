@@ -5,8 +5,8 @@ const production = process.env.NODE_ENV === 'production';
 const CleanWebpackPlugin			= require('clean-webpack-plugin');
 const HtmlWebpackPlugin				= require('html-webpack-plugin');
 const FaviconWebpackPlugin			= require('favicons-webpack-plugin');
-const ProgressBarPlugin				= require('progress-bar-webpack-plugin');
 const path								= require('path');
+const ProgressBarPlugin				= require('progress-bar-webpack-plugin');
 const ResourceHintWebpackPlugin	= require('resource-hints-webpack-plugin');
 const webpack							= require('webpack');
 
@@ -52,7 +52,7 @@ module.exports = {
 			}, {
 				test   : /\.styl$/,
 				exclude: /(node_modules|style\.styl)/,
-				loader : 'css!stylus',
+				loader : 'css!postcss!stylus',
 			}, {
 				test   : /\.jade$/,
 				exclude: /node_modules/,
