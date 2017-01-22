@@ -1,3 +1,5 @@
+@import '../../../styles/resets'
+
 .side-menu
 	position fixed
 	top 0
@@ -5,18 +7,26 @@
 	width 300px
 	background-color forestgreen
 	height 100%
-	transform translateX(-50%)
+	transform translateX(-100%)
 	transition transform .3s
 	
 	&--opened
 		transform translateX(0)
 	
 	&__close-btn
-		width 50px
-		height 50px
+		@extend $btn-reset
+		
+		width 30px
+		height 30px
 		position absolute
-		top 0
-		right 0
+		top 10px
+		background-color red
+		border-radius 5px
+		right -50px
+		transition right .3s
+		
+		.side-menu--opened &
+			right 10px
 	
 	&__list
 		list-style-type none

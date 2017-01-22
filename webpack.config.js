@@ -112,7 +112,7 @@ module.exports = {
 		port       : 7777,
 		contentBase: path.join(__dirname, '/dist'),
 		publicPath : '/',
-		open       : true,
+		open       : false,
 		inline     : true,
 	// 	debug      : true,
 		colors     : true,
