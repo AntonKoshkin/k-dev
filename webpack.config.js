@@ -56,7 +56,7 @@ module.exports = {
 			}, {
 				test   : /\.jade$/,
 				exclude: /node_modules/,
-				loader : 'jade?pretty',
+				loader : 'jade?pretty=true',
 			}, {
 				test   : /style\.styl$/,
 				exclude: /node_modules/,

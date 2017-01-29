@@ -4,8 +4,6 @@ import {Personal}		from '../../classes/personal';
 
 import {PersonalService} from '../../services/personal.service';
 
-import {blobToBase64} from '../../lib/converter';
-
 import {CONFIG} from '../../config';
 
 @Component({
@@ -38,16 +36,5 @@ export class HomePageComponent implements OnInit {
 				this.personal.image[photo] = CONFIG.url.server + photo;
 			}
 		});
-	}
-
-	submit(file: HTMLInputElement) {
-		blobToBase64(file.files[0])
-			.then(resFile => {
-				this.personalService.addImage(resFile)
-					.then(
-						result => console.log(result, 'result'),
-						error => console.log(error, 'error'),
-					);
-			});
 	}
 };

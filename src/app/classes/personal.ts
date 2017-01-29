@@ -1,28 +1,29 @@
 export class Image {
-	small: String;
-	large: String;
+	small: string;
+	large: string;
+	thumb: string;
 };
 
 export class Name {
-	first: String;
-	middle: String;
-	last: String;
+	first: string;
+	middle: string;
+	last: string;
 };
 
 export class Birth {
-	year: Number;
-	month: Number;
-	day: Number;
+	year: number;
+	month: number;
+	day: number;
 };
 
 export class Contact {
-	name: String;
-	title: String;
-	link: String;
+	name: string;
+	title: string;
+	link: string;
 };
 
 export class Personal {
-	images: Image[];
+	image: Image[];
 	name: Name;
 	birth: Birth;
 	contacts: Contact[];

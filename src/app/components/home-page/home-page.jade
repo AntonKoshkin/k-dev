@@ -1,9 +1,15 @@
 section.home-page
 	.home-page__photo
-		p Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Ipsum своего страну, переулка точках гор большого рекламных власти ее, ведущими даже о, возвращайся, необходимыми повстречался выйти семь которой коварных!
-		p Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Пустился они языкового его по всей она ее, страну, переписывается жизни взобравшись осталось. Обеспечивает составитель ему первую, родного своих несколько которое.
-	.home-page__file
-		input(
-			type='file'
-			#qweqwe)
-		button((click)='submit(qweqwe)') qweqwe
+		img(src='{{personal?.image.small}}')
+	.home-page__personal
+		.home-page__block
+			p.home-page__info name: {{personal?.name.first}} {{personal?.name.last}}
+
+			p.home-page__info birthday: {{personal?.birth.day < 10 ? '0' + personal?.birth.day : personal?.birth.day}}.{{personal?.birth.month < 10 ? '0' + personal?.birth.month : personal?.birth.month}}.{{personal?.birth.year}}
+
+		.home-page__block
+			p.home-page__info(*ngFor='let contact of personal?.contacts')
+				| {{contact.name}}: 
+				a.home-page__link(
+					href='contact.link'
+					title='{{contact.title}}') link
