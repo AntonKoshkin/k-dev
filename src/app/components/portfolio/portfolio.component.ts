@@ -1,39 +1,42 @@
 import {Component, OnInit}	from '@angular/core';
 
-import {Personal}		from '../../classes/personal';
+import {PortfolioItem} from '../../classes';
 
-import {PersonalService} from '../../services/personal.service';
-
-import {CONFIG} from '../../config';
+// import {PortfolioService} from '../../services/portfolio.service';
+import {DataFixService} from '../../services';
 
 @Component({
-	selector: 'home-page',
-	styles  : [require('./home-page.styl')[0][1]],
-	template: (require('./home-page.jade'))(),
+	selector: 'portfolio',
+	styles  : [require('./portfolio.component.styl')[0][1]],
+	template: (require('./portfolio.component.jade'))(),
 })
-export class HomePageComponent implements OnInit {
-	constructor(private personalService: PersonalService) {}
+export class PortfolioComponent implements OnInit {
+	constructor(
+		// private portfolioService: PortfolioService,
+		private fix: DataFixService
+	) {}
 
-	personal: Personal;
+	portfolio: PortfolioItem[];
 
 	ngOnInit(): void {
-		this.personalService.get()
-			.then(
-				result => {
-					console.log(result, 'res');
-					this.personal = result;
-					this.dataFix();
-				},
-				error => {
-					console.log(error, 'err');
-				}
-			);
+		console.log('ya rodilsa')
+		// this.portfolioService.get()
+		// 	.then(
+		// 		result => {
+		// 			console.log(result, 'res');
+		// 			this.portfolio = result;
+		// 			// this.dataFix();
+		// 		},
+		// 		error => {
+		// 			console.log(error, 'err');
+		// 		}
+		// 	);
 	}
 
 	dataFix() {
-		this.personal.image.forEach(image => {
-			for (let photo in image) {
-				this.personal.image[photo] = CONFIG.url.server + photo;
+		this.portfolio.forEach(item => {
+			for (let img in item.image) {
+				item.image[img] = this.fix.imagePath(item.image[img]);
 			}
 		});
 	}

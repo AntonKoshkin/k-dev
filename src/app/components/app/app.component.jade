@@ -1,3 +1,34 @@
-side-menu
-main.app
-	router-outlet
+md-sidenav-container.container
+	md-sidenav.sidenav(
+		color='primary'
+		mode='over'
+		opened='false'
+		#sidenav)
+		nav.sidenav__menu
+			md-toolbar
+				h2 K-DEV
+			ul.sidenav__list
+				li.sidenav__item(*ngFor='let menuItem of menuItems')
+					a.sidenav__link(
+						[routerLink]='[menuItem.link]'
+						routerLinkActive='sidenav__link--active')
+						md-icon.sidenav__icon arrow_forward
+						| {{menuItem.name}}
+
+	md-toolbar.toolbar(color='primary')
+		button.toolbar__burger(
+			color='primary'
+			(click)='sidenav.open()')
+			md-icon menu
+		h1.toolbar__title title
+		nav.toolbar__menu
+			ul.toolbar__list
+				li.toolbar__item(*ngFor='let menuItem of menuItems')
+					a.toolbar__link(
+						md-button
+						[routerLink]='[menuItem.link]'
+						routerLinkActive='toolbar__link--active'
+						(click)='sidenav.close()') {{menuItem.name}}
+
+	main.main
+		router-outlet

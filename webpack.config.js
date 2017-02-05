@@ -3,6 +3,7 @@
 const production = process.env.NODE_ENV === 'production';
 
 const CleanWebpackPlugin			= require('clean-webpack-plugin');
+const CopyWebpackPlugin				= require('copy-webpack-plugin');
 const HtmlWebpackPlugin				= require('html-webpack-plugin');
 const FaviconWebpackPlugin			= require('favicons-webpack-plugin');
 const path								= require('path');
@@ -54,13 +55,16 @@ module.exports = {
 				exclude: /(node_modules|style\.styl)/,
 				loader : 'css!postcss!stylus',
 			}, {
+				test   : /\.css/,
+				loader : 'style!css',
+			}, {
 				test   : /\.jade$/,
 				exclude: /node_modules/,
 				loader : 'jade?pretty=true',
 			}, {
 				test   : /style\.styl$/,
 				exclude: /node_modules/,
-				loader : 'style!css!stylus',
+				loader : 'style!css!postcss!stylus',
 			}
 		],
 	},
@@ -96,6 +100,14 @@ module.exports = {
 				windows     : true,
 			},
 		}),
+		new CopyWebpackPlugin(
+			[
+				{
+					from: 'src/app/components/home-page/social.svg',
+					to  : 'img/[name].svg',
+				}
+			]
+		),
 		new webpack.NoErrorsPlugin()
 	],
 

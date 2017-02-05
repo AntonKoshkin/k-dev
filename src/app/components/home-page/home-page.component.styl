@@ -1,0 +1,98 @@
+@import '../../../styles/variables'
+@import '../../../styles/mixins'
+
+.home-page
+	&__row
+		& + &
+			margin-top 5px
+			
+			+media(gt-sm)
+				margin-top 0
+				margin-left 5px
+
+	&__card
+		& + &
+			margin-top 5px
+
+			+media(sm)
+				margin-left 5px
+				margin-top 0
+	
+	&__photo
+		align-self stretch
+		flex-grow 1
+		display flex
+		align-items stretch
+		
+		+media(sm)
+			max-width 314px !important
+	
+	&__face
+		position relative
+		overflow hidden
+		flex-grow 1
+		
+		&:before
+			content ''
+			display block
+			float left
+			padding-bottom 100%
+	
+	&__img
+		width 100%
+		position absolute
+		top 50%
+		left 50%
+		transform translate(-50%, -50%)
+	
+	&__info
+		color gray-text
+		border-bottom 1px solid gray-border-light
+		
+		&:not(:first-child)
+			padding-top 12px
+		
+		&:first-child
+			padding-top 5px
+		
+		&:not(:last-child)
+			padding-bottom 12px
+	
+	&__socials
+		display flex
+		justify-content center
+		padding-top 24px
+		
+	&__link
+		text-decoration underline
+		display inline-block
+		
+		&--iconed
+			font-size 0
+			
+			& + &
+				margin-left 10px
+	
+	&__little-title
+		display inline-block
+		min-width 80px
+	
+	&__secret
+		direction rtl
+		unicode-bidi bidi-override
+	
+	&__icon
+		size 30px
+	
+	&__title
+		font-size 1.25rem
+		color gray-text
+		margin-bottom 10px
+	
+	&__text
+		color gray-text
+		margin-bottom 5px
+		line-height 1.3em
+		
+		a
+			text-decoration underline

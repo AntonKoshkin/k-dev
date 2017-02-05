@@ -4,18 +4,6 @@ export class Image {
 	thumb: string;
 };
 
-export class Name {
-	first: string;
-	middle: string;
-	last: string;
-};
-
-export class Birth {
-	year: number;
-	month: number;
-	day: number;
-};
-
 export class Contact {
 	name: string;
 	title: string;
@@ -24,7 +12,11 @@ export class Contact {
 
 export class Personal {
 	image: Image[];
-	name: Name;
-	birth: Birth;
+	name: string;
+	mail: string;
+	phone: string;
+	age: number;
+	city: string;
 	contacts: Contact[];
+	about: string;
 };

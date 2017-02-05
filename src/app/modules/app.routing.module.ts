@@ -1,32 +1,24 @@
 import {NgModule}					from '@angular/core';
 import {RouterModule, Routes}	from '@angular/router';
 
-import {HomePageComponent} from '../components/home-page/home-page';
+import {HomePageComponent, PortfolioComponent} from '../components';
 
 const routes: Routes = [
 	{
-		path: '',
+		path      : '',
+		redirectTo: '/about',
+		pathMatch : 'full',
+	}, {
+		path: 'about',
 		component: HomePageComponent,
 	}, {
+		path: 'portfolio',
+		component: PortfolioComponent,
+	}, {
 		path      : '**',
-		redirectTo: '',
+		redirectTo: '/about',
 		pathMatch : 'full',
 	}
-	// {
-	// 	path      : '',
-	// 	redirectTo: '/home-page',
-	// 	pathMatch : 'full',
-	// }, 
-	//  {
-	// 	path     : 'dashboard',
-	// 	component: DashboardComponent,
-	// }, {
-	// 	path     : 'heroes',
-	// 	component: HeroesComponent,
-	// }, {
-	// 	path     : 'detail/:id',
-	// 	component: HeroDetailComponent,
-	// }
 ];
 
 @NgModule({

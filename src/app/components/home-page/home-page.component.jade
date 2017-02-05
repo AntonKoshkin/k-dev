@@ -1,0 +1,62 @@
+section.home-page(
+	fxLayout='column'
+	fxLayout.gt-sm='row'
+	fxLayoutAlign='start stretch')
+	.home-page__row(
+		fxLayout='column'
+		fxLayout.gt-xs='row'
+		fxLayout.gt-sm='column'
+		fxLayoutAlign='start stretch'
+		fxFlex='noshrink')
+		md-card.home-page__card.home-page__photo(
+			fxFlex='100'
+			fxFlex.sm='50'
+			fxFlex.gt-sm='grow')
+			.home-page__face
+				img.home-page__img(
+					src='https://pp.vk.me/c618322/v618322785/17d1c/zpMp0enBxxo.jpg'
+					alt='Антон')
+		md-card.home-page__card.home-page__info(
+			fxFlex='noshrink'
+			fxFlex.gt-sm='nogrow')
+			p.home-page__info
+				span.home-page__little-title Имя:
+				|  {{personal?.name}}
+
+			p.home-page__info
+				span.home-page__little-title Возраст:
+				|  {{personal?.age}} {{years}}
+
+			p.home-page__info
+				span.home-page__little-title Город:
+				|  {{personal?.city}}
+
+			p.home-page__info
+				span.home-page__little-title Телефон:
+				|  
+				a.home-page__link(href='tel:{{personal?.phone.split(\'\').reverse().join(\'\')}}')
+					| +
+					span.home-page__secret {{personal?.phone}}
+
+			p.home-page__info
+				span.home-page__little-title Email:
+				|  
+				a.home-page__link.home-page__secret(href='mailTo:{{personal?.mail.split(\'\').reverse().join(\'\')}}') {{personal?.mail}}
+
+			.home-page__socials
+				a.home-page__link.home-page__link--iconed(
+					*ngFor='let contact of personal?.contacts'
+					md-icon-button
+					href='{{contact.link}}'
+					title='{{contact.title}}')
+					md-icon.home-page__icon(svgIcon='social:{{contact.name.toLowerCase()}}') {{{'GitHub': 'menu'}[contact.name]}}
+					| {{contact.name}}
+	.home-page__row(
+		fxLayout
+		fxLayoutAlign='start srtetch')
+		md-card.home-page__card.home-page__history(
+			fxFlex='100')
+			h4.home-page__title Немного истории
+			p.home-page__text(
+				*ngFor='let line of history'
+				[innerHTML]='line')

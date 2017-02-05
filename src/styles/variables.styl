@@ -1,0 +1,38 @@
+mobile	= 480px
+tablet	= 960px
+desktop	= 1140px
+
+media(variant)
+	if variant == xs
+		@media screen and (max-width 599px)
+			{block}
+	else if variant == gt-xs
+		@media screen and (min-width 600px)
+			{block}
+	else if variant == sm
+		@media screen and (min-width 600px) and (max-width 959px)
+			{block}
+	else if variant == gt-sm
+		@media screen and (min-width 960px)
+			{block}
+	else if variant == md
+		@media screen and (min-width 960px) and (max-width 1279px)
+			{block}
+	else if variant == gt-md
+		@media screen and (min-width 1280px)
+			{block}
+	else if variant == lg
+		@media screen and (min-width 1280px) and (max-width 1919px)
+			{block}
+	else if variant == gt-lg
+		@media screen and (min-width 1920px)
+			{block}
+	else if variant == xl
+		@media screen and (min-width 1920px)
+			{block}	
+
+gray-text			= #72
+gray-text-light	= #75
+gray-border-light	= #f0
+
+blue-text-active = #00bcd4

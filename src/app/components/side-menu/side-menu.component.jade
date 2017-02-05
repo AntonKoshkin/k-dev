@@ -1,9 +1,0 @@
-aside.side-menu([ngClass]='{\'side-menu--opened\': sideMenuIsOpened}')
-	button.side-menu__close-btn(
-		type='button'
-		(click)='toggleSideMenu()')
-	ul.side-menu__list
-		li.side-menu__li(*ngFor='let menuItem of menuItems')
-			a.side-menu__a(
-				[routerLink]='[menuItem.link]'
-				routerLinkActive='menuItem.active') {{menuItem.name}}

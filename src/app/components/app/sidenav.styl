@@ -1,0 +1,45 @@
+@import '../../../styles/variables'
+
+.sidenav
+	width 300px
+	
+	&__list
+		list-style-type none
+	
+	&__item
+		border-bottom-width 1px
+		border-bottom-style solid
+		margin 0
+		padding 0
+		border-color gray-border-light
+	
+	&__link
+		display block
+		font-size (14rem / 16)
+		font-weight 400
+		line-height (47em / 14)
+		padding 0 16px
+		position relative
+		transition all .3s
+		outline none
+		color gray-text-light
+		
+		&--active
+			font-weight 600
+
+		&:hover
+			background #fa
+			color blue-text-active
+	
+	&__icon
+		display none
+		color inherit
+		width 10px
+		height 10px
+		font-size .8em
+		position absolute
+		left 5px
+		top 17px
+		
+		.sidenav__link:focus &
+			display inline-block
