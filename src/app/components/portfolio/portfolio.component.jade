@@ -1,1 +1,19 @@
-section.portfolio
+section.portfolio(*ngFor='let project of projects')
+	md-card.portfolio__item
+		md-card-header
+			md-card-title {{project.title}}
+			md-card-subtitle
+				a.portfolio__link(
+					href='{{project.link.link}}'
+					title='{{project.link.link}}') {{project.link.name}}
+		img(
+			[src]='project.image.small'
+			alt='{{project.image.alt}}'
+			md-card-image)
+		md-card-content
+			p {{project.description}}
+		md-card-actions.portfolio__links
+			button.portfolio__btn(
+				type='button'
+				href='#somelink'
+				md-button) more info

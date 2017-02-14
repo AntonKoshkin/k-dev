@@ -2,7 +2,7 @@ import {Component, OnInit}	from '@angular/core';
 
 import {PortfolioItem} from '../../classes';
 
-// import {PortfolioService} from '../../services/portfolio.service';
+import {PortfolioService} from '../../services/portfolio.service';
 import {DataFixService} from '../../services';
 
 @Component({
@@ -12,32 +12,30 @@ import {DataFixService} from '../../services';
 })
 export class PortfolioComponent implements OnInit {
 	constructor(
-		// private portfolioService: PortfolioService,
+		private portfolioService: PortfolioService,
 		private fix: DataFixService
 	) {}
 
-	portfolio: PortfolioItem[];
+	projects: PortfolioItem[];
 
 	ngOnInit(): void {
-		console.log('ya rodilsa')
-		// this.portfolioService.get()
-		// 	.then(
-		// 		result => {
-		// 			console.log(result, 'res');
-		// 			this.portfolio = result;
-		// 			// this.dataFix();
-		// 		},
-		// 		error => {
-		// 			console.log(error, 'err');
-		// 		}
-		// 	);
+		console.log('ya rodilsa');
+		this.portfolioService.get()
+			.then(
+				result => {
+					console.log(result, 'res');
+					this.projects = result;
+					// this.dataFix();
+				},
+				error => {
+					console.log(error, 'err');
+				}
+			);
 	}
 
 	dataFix() {
-		this.portfolio.forEach(item => {
-			for (let img in item.image) {
-				item.image[img] = this.fix.imagePath(item.image[img]);
-			}
+		this.projects.forEach(item => {
+			item.image = this.fix.imagePath(item.image);
 		});
 	}
 };

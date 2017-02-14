@@ -1,10 +1,10 @@
-export class Image {
+class Image {
 	small: string;
 	large: string;
 	thumb: string;
 };
 
-export class Contact {
+class Contact {
 	name: string;
 	title: string;
 	link: string;

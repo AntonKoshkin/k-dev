@@ -8,8 +8,17 @@ import {FlexLayoutModule}	from '@angular/flex-layout';
 
 import {AppRoutingModule}	from './app.routing.module';
 
-import {AppComponent, HomePageComponent, PortfolioComponent} from '../components';
-import {PersonalService, PortfolioService, DataFixService} from '../services';
+import {
+	AppComponent,
+	HomePageComponent,
+	PortfolioComponent
+} from '../components';
+
+import {
+	PersonalService,
+	PortfolioService,
+	DataFixService
+} from '../services';
 
 import 'hammerjs';
 
