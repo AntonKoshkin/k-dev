@@ -33,10 +33,12 @@ export class ProjectComponent implements OnInit {
 	}
 
 	dataFix() {
-		this.projects.forEach(item => {
-			for (let img in item.image) {
-				item.image[img] = this.fix.imagePath(item.image[img]);
-			}
+		this.projects.forEach(project => {
+			project.images.forEach((imagesObj: Object) => {
+				for (let image in imagesObj) {
+					imagesObj[image] = this.fix.imagePath(imagesObj[image]);
+				}
+			});
 		});
 	}
 };

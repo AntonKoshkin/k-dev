@@ -34,8 +34,10 @@ export class PortfolioComponent implements OnInit {
 	}
 
 	dataFix() {
-		this.projects.forEach(item => {
-			item.image = this.fix.imagePath(item.image);
+		this.projects.forEach(project => {
+			for (let image in project.image) {
+				project.image[image] = this.fix.imagePath(project.image[image]);
+			}
 		});
 	}
 };
