@@ -20,7 +20,7 @@ md-sidenav-container.container
 			color='primary'
 			(click)='sidenav.open()')
 			md-icon menu
-		h1.toolbar__title title
+		h1.toolbar__title {{title}}
 		nav.toolbar__menu
 			ul.toolbar__list
 				li.toolbar__item(*ngFor='let menuItem of menuItems')

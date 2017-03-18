@@ -12,7 +12,7 @@ import {MenuItem} from '../../classes';
 	template: (require('./app.component.jade'))(),
 })
 export class AppComponent {
-	title: string = 'K-DEV';
+	title: string = 'some title';
 	menuItems: MenuItem[] = [
 		{
 			name: 'Обо мне',

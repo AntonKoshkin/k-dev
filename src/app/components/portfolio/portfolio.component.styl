@@ -1,3 +1,5 @@
+@import '../../../styles/mixins'
+
 .portfolio
 	&__links
 		padding-left 20px
@@ -9,3 +11,22 @@
 
 	&__btn
 		text-transform uppercase
+	
+	&__item
+		+media(xs)
+			margin-top 20px
+		
+		+media(gt-xs)
+			margin-right 20px
+			
+		&:nth-child(2n)
+			+media(sm)
+				margin-right 0
+			
+		&:nth-child(3n)
+			+media(md)
+				margin-right 0
+			
+		&:nth-child(4n)
+			+media(gt-md)
+				margin-right 0

@@ -1,5 +1,13 @@
-section.portfolio(*ngFor='let project of projects')
-	md-card.portfolio__item
+section.portfolio(
+	fxLayout='column'
+	fxLayout.gt-xs='row'
+	fxLayoutAlign='start stretch')
+	md-card.portfolio__item(
+		*ngFor='let project of projects'
+		fxFlex='100'
+		fxFlex.sm='50'
+		fxFlex.md='33.33'
+		fxFlex.gt-md='25')
 		md-card-header
 			md-card-title {{project.title}}
 			md-card-subtitle

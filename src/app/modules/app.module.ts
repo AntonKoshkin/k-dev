@@ -11,7 +11,8 @@ import {AppRoutingModule}	from './app.routing.module';
 import {
 	AppComponent,
 	HomePageComponent,
-	PortfolioComponent
+	PortfolioComponent,
+	ProjectComponent
 } from '../components';
 
 import {
@@ -27,7 +28,8 @@ import 'hammerjs';
 	declarations: [
 		AppComponent,
 		HomePageComponent,
-		PortfolioComponent
+		PortfolioComponent,
+		ProjectComponent
 	],
 	imports: [
 		AppRoutingModule,
