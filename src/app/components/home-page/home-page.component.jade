@@ -14,7 +14,7 @@ section.home-page(
 			fxFlex.gt-sm='grow')
 			.home-page__face
 				img.home-page__img(
-					src='https://pp.vk.me/c618322/v618322785/17d1c/zpMp0enBxxo.jpg'
+					[src]='logo?.small'
 					alt='Антон')
 		md-card.home-page__card.home-page__info(
 			fxFlex='noshrink'
@@ -52,11 +52,19 @@ section.home-page(
 					md-icon.home-page__icon(svgIcon='social:{{contact.name.toLowerCase()}}') {{{'GitHub': 'menu'}[contact.name]}}
 					| {{contact.name}}
 	.home-page__row(
-		fxLayout
+		fxLayout='column'
+		fxLayout.sm='row'
 		fxLayoutAlign='start srtetch')
-		md-card.home-page__card.home-page__history(
-			fxFlex='100')
+		md-card.home-page__card.home-page__history(fxFlex='grow')
 			h4.home-page__title Немного истории
 			p.home-page__text(
 				*ngFor='let line of history'
 				[innerHTML]='line')
+		md-card.home-page__card.home-page__skills(
+			fxLayout
+			fxLayout.sm='column'
+			fxLayoutWrap='wrap'
+			fxLayoutWrap.sm='nowrap'
+			fxFlex.gt-sm='noshrink')
+			h4.home-page__title(fxFlex='100') Скилы
+			span.home-page__skill(*ngFor='let skill of personal?.skills') {{skill.name}}

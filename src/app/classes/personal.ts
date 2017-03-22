@@ -1,22 +1,28 @@
-class Image {
+export class PersonalImage {
 	small: string;
 	large: string;
 	thumb: string;
+	isMain: boolean;
 };
 
-class Contact {
+export class Contact {
 	name: string;
 	title: string;
 	link: string;
 };
 
 export class Personal {
-	image: Image[];
-	name: string;
-	mail: string;
-	phone: string;
 	age: number;
+	about: string;
+	birth: Date;
 	city: string;
 	contacts: Contact[];
-	about: string;
+	images: PersonalImage[];
+	mail: string;
+	name: string;
+	phone: string;
+	skills: {
+		name: string;
+		level: number;
+	};
 };

@@ -11,14 +11,16 @@ import {AppRoutingModule}	from './app.routing.module';
 import {
 	AppComponent,
 	HomePageComponent,
+	NotFoundComponent,
 	PortfolioComponent,
 	ProjectComponent
 } from '../components';
 
 import {
+	DataFixService,
 	PersonalService,
 	PortfolioService,
-	DataFixService
+	ProjectService
 } from '../services';
 
 import 'hammerjs';
@@ -28,6 +30,7 @@ import 'hammerjs';
 	declarations: [
 		AppComponent,
 		HomePageComponent,
+		NotFoundComponent,
 		PortfolioComponent,
 		ProjectComponent
 	],
@@ -42,7 +45,8 @@ import 'hammerjs';
 	providers: [
 		DataFixService,
 		PersonalService,
-		PortfolioService
+		PortfolioService,
+		ProjectService
 	],
 })
 export class AppModule {};

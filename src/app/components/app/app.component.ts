@@ -1,4 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {
+	NavigationEnd,
+	Router
+} from '@angular/router';
+import {MdSidenav} from '@angular/material';
 
 import {MenuItem} from '../../classes';
 
@@ -12,17 +17,40 @@ import {MenuItem} from '../../classes';
 	template: (require('./app.component.jade'))(),
 })
 export class AppComponent {
+	@ViewChild('sidenav') sidenav: MdSidenav;
+
+	constructor(
+		private router: Router
+	) {
+		this.router.events.subscribe(val => {
+			if (val instanceof NavigationEnd) {
+				let newTitleArray: any[] = this.menuItems.filter(item => item.link === this.router.url);
+				if (newTitleArray.length) {
+					this.title = newTitleArray[0].name;
+				} else {
+					if (val.url.includes('portfolio')) {
+						let url: string = val.url.split('/').reverse()[0];
+						this.title = 'Проект ' + url;
+					}
+				}
+			}
+			setTimeout(() => {
+				this.sidenav.close();
+			}, 100);
+		});
+	}
+
 	title: string = 'some title';
 	menuItems: MenuItem[] = [
 		{
 			name: 'Обо мне',
 			link: '/about',
 		}, {
-			name: 'Мои работы',
+			name: 'Портфолио',
 			link: '/portfolio',
-		}, {
-			name: 'Бложек',
-			link: '/blog',
+		// }, {
+		// 	name: 'Бложек',
+		// 	link: '/blog',
 		}
 	];
 };

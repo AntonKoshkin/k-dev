@@ -1,8 +1,12 @@
 import {Component, OnInit}	from '@angular/core';
+import {Router} from '@angular/router';
 
-import {Project} from '../../classes';
+import {Project, ProjectImage} from '../../classes';
 
-import {DataFixService, ProjectService} from '../../services';
+import {
+	DataFixService,
+	ProjectService
+} from '../../services';
 
 @Component({
 	selector: 'project',
@@ -11,20 +15,21 @@ import {DataFixService, ProjectService} from '../../services';
 })
 export class ProjectComponent implements OnInit {
 	constructor(
+		private fix: DataFixService,
 		private projectService: ProjectService,
-		private fix: DataFixService
+		private router: Router
 	) {}
 
-	projects: Project[];
+	project: Project;
 
 	ngOnInit(): void {
-		console.log('ya rodilsa');
-		this.projectService.get(123)
+		console.log('project component');
+		this.projectService.get(this.router.url.split('/').reverse()[0])
 			.then(
 				result => {
 					console.log(result, 'res');
-					this.projects = result;
-					// this.dataFix();
+					this.project = result;
+					this.dataFix();
 				},
 				error => {
 					console.log(error, 'err');
@@ -33,12 +38,15 @@ export class ProjectComponent implements OnInit {
 	}
 
 	dataFix() {
-		this.projects.forEach(project => {
-			project.images.forEach((imagesObj: Object) => {
-				for (let image in imagesObj) {
+		this.project.images.forEach((imagesObj: ProjectImage) => {
+			if (imagesObj.main) {
+				this.project.mainImage = imagesObj;
+			}
+			for (let image in imagesObj) {
+				if (typeof imagesObj[image] === 'string') {
 					imagesObj[image] = this.fix.imagePath(imagesObj[image]);
 				}
-			});
+			}
 		});
 	}
 };

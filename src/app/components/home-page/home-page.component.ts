@@ -2,13 +2,11 @@ import {Component, OnInit, ViewEncapsulation}	from '@angular/core';
 import {DomSanitizer}									from '@angular/platform-browser';
 import {MdIconRegistry}									from '@angular/material';
 
-import {Personal}		from '../../classes';
+import {Personal, PersonalImage} from '../../classes';
 
-import {PersonalService} from '../../services';
+import {PersonalService, DataFixService} from '../../services';
 
-import {blobToBase64} from '../../lib/converter';
-
-import {CONFIG} from '../../config';
+// import {blobToBase64} from '../../lib/converter';
 
 @Component({
 	selector     : 'home-page',
@@ -21,7 +19,8 @@ export class HomePageComponent implements OnInit {
 	constructor(
 		private personalService: PersonalService,
 		mdIconRegistry: MdIconRegistry,
-		private sanitizer: DomSanitizer
+		private sanitizer: DomSanitizer,
+		private fix: DataFixService
 	) {
 		mdIconRegistry
 			.addSvgIconSetInNamespace(
@@ -33,12 +32,13 @@ export class HomePageComponent implements OnInit {
 	personal: Personal;
 	years: string;
 	history: string[];
+	logo: PersonalImage;
 
 	ngOnInit(): void {
 		this.personalService.get()
 			.then(
 				result => {
-					console.log(result, 'res');
+					// console.log(result, 'res');
 					this.personal = result;
 					this.dataFix();
 				},
@@ -49,9 +49,13 @@ export class HomePageComponent implements OnInit {
 	}
 
 	dataFix() {
-		this.personal.image.forEach(image => {
-			for (let photo in image) {
-				this.personal.image[photo] = CONFIG.url.server + photo;
+		this.personal.images.forEach(image => {
+			if (image.isMain) {
+				this.logo = image;
+			}
+
+			for (let picture in image) {
+				image[picture] = this.fix.imagePath(image[picture]);
 			}
 		});
 
@@ -73,44 +77,18 @@ export class HomePageComponent implements OnInit {
 			}
 		});
 		this.history = history;
-		this.setYears();
+		this.personal.age = this.fix.birthDateToAge(this.personal.birth);
+		this.years = this.fix.setYearsWord(this.personal.age);
 	}
 
-	setYears() {
-		let lastChar: number = Number(this.personal.age.toString().split('').reverse()[0]);
-
-		if (this.personal.age > 10 && this.personal.age < 15) {
-			this.years = 'лет';
-		} else {
-			switch (lastChar) {
-				case 0:
-				case 5:
-				case 6:
-				case 7:
-				case 8:
-				case 9:
-					this.years = 'лет';
-					break;
-				case 1:
-					this.years = 'год';
-					break;
-				case 2:
-				case 3:
-				case 4:
-					this.years = 'года';
-					break;
-			}
-		}
-	}
-
-	submit(file: HTMLInputElement) {
-		blobToBase64(file.files[0])
-			.then(resFile => {
-				this.personalService.addImage(resFile)
-					.then(
-						result => console.log(result, 'result'),
-						error => console.log(error, 'error'),
-					);
-			});
-	}
+	// submit(file: HTMLInputElement) {
+	// 	blobToBase64(file.files[0])
+	// 		.then(resFile => {
+	// 			this.personalService.addImage(resFile)
+	// 				.then(
+	// 					result => console.log(result, 'result'),
+	// 					error => console.log(error, 'error'),
+	// 				);
+	// 		});
+	// }
 };

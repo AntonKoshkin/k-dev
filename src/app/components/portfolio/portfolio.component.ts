@@ -1,4 +1,5 @@
 import {Component, OnInit}	from '@angular/core';
+import {Router} from '@angular/router';
 
 import {PortfolioItem} from '../../classes';
 
@@ -13,7 +14,8 @@ import {DataFixService} from '../../services';
 export class PortfolioComponent implements OnInit {
 	constructor(
 		private portfolioService: PortfolioService,
-		private fix: DataFixService
+		private fix: DataFixService,
+		private router: Router
 	) {}
 
 	projects: PortfolioItem[];
@@ -25,7 +27,7 @@ export class PortfolioComponent implements OnInit {
 				result => {
 					console.log(result, 'res');
 					this.projects = result;
-					// this.dataFix();
+					this.dataFix();
 				},
 				error => {
 					console.log(error, 'err');
@@ -36,8 +38,14 @@ export class PortfolioComponent implements OnInit {
 	dataFix() {
 		this.projects.forEach(project => {
 			for (let image in project.image) {
-				project.image[image] = this.fix.imagePath(project.image[image]);
+				if (typeof image === 'string') {
+					project.image[image] = this.fix.imagePath(project.image[image]);
+				}
 			}
 		});
+	}
+
+	goToProject = (projectName: string): void => {
+		this.router.navigate(['/portfolio', projectName]);
 	}
 };

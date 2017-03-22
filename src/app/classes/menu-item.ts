@@ -1,4 +1,4 @@
 export class MenuItem {
-	name: String;
-	link: String;
+	name: string;
+	link: string;
 };

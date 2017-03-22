@@ -1,0 +1,38 @@
+@import '../../../styles/variables'
+@import '../../../styles/mixins'
+
+.project
+	&__info
+		+media(gt-xs)
+			margin-right 10px
+			min-width 50%
+
+		> *
+			margin-bottom 10px
+			
+			&:last-child
+				+media(gt-xs)
+					margin-bottom 0
+
+	+media(gt-xs)
+		display flex
+		align-items stretch
+
+	&__img
+		width 100%
+	
+	&__param
+		&--tini
+			color gray-text
+
+	&__link
+		font-size .875rem
+		display block
+		color blue-text-active
+		text-decoration underline
+		
+		& + &
+			margin-top 10px
+	
+	&__text
+		color gray-text

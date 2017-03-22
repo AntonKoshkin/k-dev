@@ -1,27 +1,16 @@
-section.portfolio(
-	fxLayout='column'
-	fxLayout.gt-xs='row'
-	fxLayoutAlign='start stretch')
+section.portfolio
 	md-card.portfolio__item(
 		*ngFor='let project of projects'
-		fxFlex='100'
-		fxFlex.sm='50'
-		fxFlex.md='33.33'
-		fxFlex.gt-md='25')
-		md-card-header
-			md-card-title {{project.title}}
-			md-card-subtitle
-				a.portfolio__link(
+		(click)='goToProject(project.name)')
+		md-card-header.portfolio__header
+			md-card-title.portfolio__title {{project.title}}
+			//- md-card-subtitle {{project.name}}
+				//- a.portfolio__link(
 					href='{{project.link.link}}'
 					title='{{project.link.link}}') {{project.link.name}}
 		img(
 			[src]='project.image.small'
 			alt='{{project.image.alt}}'
 			md-card-image)
-		md-card-content
+		md-card-content.portfolio__text
 			p {{project.description}}
-		md-card-actions.portfolio__links
-			button.portfolio__btn(
-				type='button'
-				href='#somelink'
-				md-button) more info

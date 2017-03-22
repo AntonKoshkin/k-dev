@@ -1,34 +1,34 @@
-class ProjectImage {
-	small: string;
+export class ProjectImage {
+	alt: string;
 	large: string;
-	alt  : string;
+	small: string;
+	main: boolean;
 }
 
 class ProjectLink {
-	place: string;
 	link: string;
+	place: string;
 }
 
 class ProjectTextBlock {
-	title: string;
 	paragraph: string;
+	title: string;
 }
 
 export class Project {
-	id: number;
-	images: ProjectImage[];
-	title: string;
-	pathName: string;
 	description: string;
 	descriptions: ProjectTextBlock[];
+	id: number;
+	images: ProjectImage[];
 	links: ProjectLink[];
+	mainImage: ProjectImage;
+	name: string;
+	title: string;
 };
 
 export class PortfolioItem {
-	id: number;
-	image: ProjectImage;
-	title: string;
-	pathName: string;
 	description: string;
-	link: string;
+	image: ProjectImage;
+	name: string;
+	title: string;
 };

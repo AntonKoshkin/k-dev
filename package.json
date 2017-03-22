@@ -1,6 +1,6 @@
 {
   "name": "k-dev.ru",
-  "version": "0.0.1",
+  "version": "0.1.0 pre alpha",
   "description": "Anton Koshkin Developer home page",
   "main": "index.js",
   "scripts": {
