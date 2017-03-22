@@ -1,11 +1,12 @@
 {
   "name": "k-dev.ru",
-  "version": "0.1.0 pre alpha",
+  "version": "0.1.0",
   "description": "Anton Koshkin Developer home page",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
     "build": "NODE_ENV=production webpack -p",
+    "devbuild": "NODE_ENV=development webpack -p",
     "server": "NODE_ENV=production webpack -p && supervisor server/app.js",
     "postinstall": "npm install -g typescript tslint"
   },

@@ -12,7 +12,7 @@ import {Personal} from '../classes';
 export class PersonalService {
 	constructor (private http: Http) {}
 
-	private apiUrl: string = CONFIG.url.server + '/personal';
+	private apiUrl: string = CONFIG.url.server + CONFIG.url.api + '/personal';
 	// private addImageUrl: string = this.apiUrl + '/image';
 
 	// private headers = new Headers({'Content-Type': 'application/json'});

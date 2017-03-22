@@ -11,7 +11,7 @@ import {PortfolioItem} from '../classes';
 export class PortfolioService {
 	constructor (private http: Http) {}
 
-	private apiUrl: string = CONFIG.url.server + '/portfolio';
+	private apiUrl: string = CONFIG.url.server + CONFIG.url.api + '/portfolio';
 
 	private handleError(error: any): Promise<any> {
 		console.error('error', error);

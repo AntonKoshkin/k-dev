@@ -4,7 +4,7 @@ section.project
 			img.project__img([src]='project?.mainImage.small')
 		md-card.project__params
 			p.project__param(*ngFor='let param of project?.params') {{param[0]}}: 
-				span.project__param--tini{{param[1]}}
+				span.project__param--tini {{param[1]}}
 		md-card.project__links
 			a.project__link(
 				*ngFor='let link of project?.links'

@@ -38,7 +38,7 @@ export class PortfolioComponent implements OnInit {
 	dataFix() {
 		this.projects.forEach(project => {
 			for (let image in project.image) {
-				if (typeof image === 'string') {
+				if (image !== 'main' && image !== 'alt') {
 					project.image[image] = this.fix.imagePath(project.image[image]);
 				}
 			}
