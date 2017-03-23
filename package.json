@@ -6,8 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "NODE_ENV=production webpack -p",
-    "devbuild": "NODE_ENV=development webpack -p",
-    "server": "NODE_ENV=production webpack -p && supervisor server/app.js",
+    "devbuild": "NODE_ENV=development webpack",
+    "server": "NODE_ENV=production webpack -p",
     "postinstall": "npm install -g typescript tslint"
   },
   "repository": {

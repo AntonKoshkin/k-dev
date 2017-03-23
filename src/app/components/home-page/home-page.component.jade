@@ -65,6 +65,7 @@ section.home-page(
 			fxLayout.sm='column'
 			fxLayoutWrap='wrap'
 			fxLayoutWrap.sm='nowrap'
+			fxFlex.xs='noshrink'
 			fxFlex.gt-sm='noshrink')
 			h4.home-page__title(fxFlex='100') Скилы
 			span.home-page__skill(*ngFor='let skill of personal?.skills') {{skill.name}}

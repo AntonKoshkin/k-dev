@@ -12,7 +12,7 @@ import {Project} from '../classes';
 export class ProjectService {
 	constructor (private http: Http) {}
 
-	private apiUrl: string = CONFIG.url.server + '/portfolio/';
+	private apiUrl: string = CONFIG.url.server + '/api/portfolio/';
 
 	// private headers = new Headers({'Content-Type': 'application/json'});
 
