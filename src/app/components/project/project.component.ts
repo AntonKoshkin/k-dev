@@ -21,6 +21,7 @@ export class ProjectComponent implements OnInit {
 	) {}
 
 	project: Project;
+	about: string[];
 
 	ngOnInit(): void {
 		console.log('project component');
@@ -48,5 +49,8 @@ export class ProjectComponent implements OnInit {
 				}
 			}
 		});
+
+		this.about = this.project.descriptionFull.split('\n');
+		console.log(this.about);
 	}
 };

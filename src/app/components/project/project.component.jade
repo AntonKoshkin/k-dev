@@ -12,4 +12,4 @@ section.project
 				[title]='link.title'
 				[target]='link.blank ? \'_blank\' : \'_self\'') {{link.name}} 
 	md-card.project__description
-		p.project__text {{project?.descriptionFull}}
+		p.project__text(*ngFor='let paragraph of about') {{paragraph}}

@@ -55,8 +55,8 @@ module.exports = {
 				exclude: /(node_modules|style\.styl)/,
 				loader : 'css!postcss!stylus',
 			}, {
-				test   : /\.css/,
-				loader : 'style!css',
+				test  : /\.css/,
+				loader: 'style!css',
 			}, {
 				test   : /\.jade$/,
 				exclude: /node_modules/,
@@ -78,8 +78,8 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			template: './src/index.jade',
-			prefetch: ['**/*.*'],
-			preload : ['**/*.*'],
+			// prefetch: ['**/*.*'],
+			// preload : ['**/*.*'],
 			// filename: 'dist/index.html',
 		}),
 		new ResourceHintWebpackPlugin(),
@@ -126,7 +126,7 @@ module.exports = {
 		publicPath : '/',
 		open       : false,
 		inline     : true,
-	// 	debug      : true,
+		// debug      : true,
 		colors     : true,
 		noInfo     : true,
 

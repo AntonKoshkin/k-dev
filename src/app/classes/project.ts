@@ -10,14 +10,15 @@ class ProjectLink {
 	place: string;
 }
 
-class ProjectTextBlock {
-	paragraph: string;
-	title: string;
-}
+// class ProjectTextBlock {
+// 	paragraph: string;
+// 	title: string;
+// }
 
 export class Project {
 	description: string;
-	descriptions: ProjectTextBlock[];
+	descriptionFull: string;
+	// descriptions: ProjectTextBlock[];
 	id: number;
 	images: ProjectImage[];
 	links: ProjectLink[];
